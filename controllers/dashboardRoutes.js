@@ -15,7 +15,7 @@ router.get('/', async (req, res) => {
                 }
             }]
         }, 
-        );
+    );
         const userPosts = user.map((post) => post.get({ plain: true}));
             res.render('dashboard', {
                 userPosts, 

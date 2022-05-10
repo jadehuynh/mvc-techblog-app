@@ -3,34 +3,36 @@ const { Comment, Post, User } = require('../models')
 const withAuth = require('../utils/auth')
 
 router.get('/', async (req,res) => {
-    // try {
-    //     const postData = await Post.findAll({
-    //         include: [
-    //             {
-    //                 model: Post,
-    //                 attributes: ['title'],
-    //             },
-    //         ],
-    //     }),
-    // }
-
-    //     const posts = postData.map((post) => post.get({ plain:true }));
+    try {
+        const postContent = await Post.findAll({
+            include: [
+                {
+                    model: Post,
+                    attributes: ['title'],
+                },
+            ],
+        })
+    }catch (err) {
+      res.status(500).json(err);
+    }
+        const posts = postContent.map((post) => post.get({ plain:true }));
    
         res.render('homepage', {
+            posts,
             logged_in: req.session.logged_in 
     });
 });
 
 router.get('/comment', async (req,res) => {
     try {
-        // const projectData = await Comment.findByPk(req.params.id, {
-        //   include: [
-        //     {
-        //       model: User,
-        //       attributes: ['username'],
-        //     },
-        //   ],
-        // });
+        const projectComment = await Comment.findByPk(req.params.id, {
+          include: [
+            {
+              model: User,
+              attributes: ['username'],
+            },
+          ],
+        });
     
         const comments = commentData.get({ plain: true });
     
@@ -45,34 +47,36 @@ router.get('/comment', async (req,res) => {
 router.get('/comment/:id', async (req,res) => {
     
     res.render('comment', {
+        posts,
         logged_in: req.session.logged_in, 
     })
 })
 
 router.get('/dashboard', async (req,res) => {
     try {
-        // const projectData = await Project.findByPk(req.params.id, {
-        //   include: [
-        //     {
-        //       model: User,
-        //       attributes: ['username'],
-        //     },
-        //   ],
-        // });
+        const projectComment = await Project.findByPk(req.params.id, {
+          include: [
+            {
+              model: User,
+              attributes: ['username'],
+            },
+          ],
+        });
     
         const posts = postData.get({ plain: true });
     
         res.render('dashboard', {
+          posts,
           logged_in: req.session.logged_in
         });
       } catch (err) {
         res.status(500).json(err);
       }
-})
+});
 
 router.get('/posts', withAuth, async (req,res) => {
     try {
-        const postData = await Post.findByPk(req.session.user_id, {
+        const postContent = await Post.findByPk(req.session.user_id, {
           attributes: { exclude: ['password'] },
           include: [{ model: User}],
         });
@@ -92,6 +96,7 @@ router.get('/posts', withAuth, async (req,res) => {
 router.get('/posts/:id', async (req,res) => {
     
     res.render('posts', {
+        posts,
         logged_in: req.session.logged_in, 
     })
 })
