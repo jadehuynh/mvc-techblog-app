@@ -42,6 +42,13 @@ router.get('/comment', async (req,res) => {
       }
 })
 
+router.get('/comment/:id', async (req,res) => {
+    
+    res.render('comment', {
+        logged_in: req.session.logged_in, 
+    })
+})
+
 router.get('/dashboard', async (req,res) => {
     try {
         // const projectData = await Project.findByPk(req.params.id, {
@@ -80,6 +87,15 @@ router.get('/posts', withAuth, async (req,res) => {
         res.status(500).json(err);
       }
 });
+
+
+router.get('/posts/:id', async (req,res) => {
+    
+    res.render('posts', {
+        logged_in: req.session.logged_in, 
+    })
+})
+
 
 router.get('/login', (req, res) => {
     if (req.session.logged_in) {
