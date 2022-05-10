@@ -27,7 +27,7 @@ router.get('/comment', async (req,res) => {
         //   include: [
         //     {
         //       model: User,
-        //       attributes: ['name'],
+        //       attributes: ['username'],
         //     },
         //   ],
         // });
@@ -55,7 +55,7 @@ router.get('/dashboard', async (req,res) => {
         //   include: [
         //     {
         //       model: User,
-        //       attributes: ['name'],
+        //       attributes: ['username'],
         //     },
         //   ],
         // });
