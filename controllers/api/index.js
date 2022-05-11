@@ -8,7 +8,6 @@ const users = require('./userRoute')
 
 router.use('/login', login);
 router.use('/posts', posts);
-router.use('/dashboard', dashboard);
 router.use('/comment', comment);
 router.use('/users', users)
 
