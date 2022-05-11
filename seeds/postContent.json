@@ -1,0 +1,17 @@
+[
+    {
+        "title": "Lorem ipsum dolor sit",
+        "body": "Quae laborum, sunt ab, commodi perferendis repellat animi, minima eos facere saepe est enim aperiam. Earum hic quidem voluptatibus repellat dolor exercitationem.",
+        "user_id": 1
+    },
+    {
+        "title": "Amet consectetur ",
+        "body": "Quae laborum, sunt ab, commodi perferendis repellat animi, minima eos facere saepe est enim aperiam. Earum hic quidem voluptatibus repellat dolor exercitationem.",
+        "user_id": 2
+    },
+    {
+        "title": "Dolor sit",
+        "body": "Quae laborum, sunt ab, commodi perferendis repellat animi, minima eos facere saepe est enim aperiam. Earum hic quidem voluptatibus repellat dolor exercitationem.",
+        "user_id": 3
+    }
+]

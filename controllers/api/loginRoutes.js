@@ -4,13 +4,13 @@ const { User } = require('../../models');
 router.post('/', async (req, res) => {
   try {
    
-    const checkUser = await User.findOne({ where: {user_id:  req.body.user_id}});
+    const checkUser = await User.findOne({ where: {username:  req.body.username}});
 
     if (!checkUser) {
       res.status(400).json({ message: 'Incorrect username, please try again' });
       return;
     }
-    const correctPassword = await checkUser.checkPw(req.body.password);
+    const correctPassword = await checkUser.checkPassword(req.body.password);
  
     if (!correctPassword) {
       res.status(401).json({ message: 'Incorrect password, please try again' });

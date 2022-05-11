@@ -1,0 +1,61 @@
+<!-- START NAV -->
+  <nav class="navbar">
+    <div class="container">
+      <div class="navbar-brand">
+        <a class="navbar-item" href="../">
+        </a>
+        <span class="navbar-burger burger" data-target="navbarMenu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </span>
+      </div>
+      <div id="navbarMenu" class="navbar-menu">
+        <div class="navbar-end">
+          <div class=" navbar-item">
+          </div>
+          <a class="navbar-item is-active is-size-5 has-text-weight-semibold" href="">
+            Home
+          </a>
+          <a class="navbar-item is-size-5 has-text-weight-semibold" href="./login">
+            Login
+          </a>
+          <a class="navbar-item is-size-5 has-text-weight-semibold" href="./dashboard">
+            Dashboard
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <!-- END NAV -->
+
+  <!-- Articles -->
+  <section class="hero ">
+    <div class="hero-body">
+      <div class="container">
+
+        <section class="section">
+          {{#each posts}}
+          <div class="columns is-variable is-8">
+            <div class="column is-5 is-offset-1 ">
+              <div class="content is-medium">
+                <h1 class="title has-text-black is-3">{{title}}</h1>
+                <p class="has-text-dark">{{body}}</p>
+              </div>
+            </div>
+          </div>
+          {{/each}}
+
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="content has-text-centered">
+      <p>
+        <strong>Bulma - Blog theme</strong> by <a href="https://gonzalojs.com">Gonzalo Gutierrez</a>. Based on the <a
+          href="http://jigsaw-blog-staging.tighten.co/">jigsaw-blog</a>. The source code is licensed
+        <a href="http://opensource.org/licenses/mit-license.php">MIT</a>
+      </p>
+    </div>
+  </footer>
