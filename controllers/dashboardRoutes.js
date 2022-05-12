@@ -24,7 +24,7 @@ router.get('/', async (req, res) => {
         } catch (err) {
             console.error(err);
             res.status(400).json(err);
-    }
+        }
 });
 
 router.get('/:id', async (req, res) => {
@@ -42,8 +42,7 @@ router.get('/:id', async (req, res) => {
             model: User, 
             attributes: ['username']
         }]
-}, 
-);
+},);
         const editPost = post.get({ plain: true });
             res.render('editDeletePost', {
                 editPost,
@@ -51,7 +50,7 @@ router.get('/:id', async (req, res) => {
         } catch (err) {
             console.error(err);
             res.status(400).json(err);
-    }
+        }
 });
 
 module.exports = router;

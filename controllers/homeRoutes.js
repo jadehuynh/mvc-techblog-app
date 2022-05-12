@@ -3,7 +3,7 @@ const { Comment, Post, User } = require('../models')
 const withAuth = require('../utils/auth')
 
 router.get('/', async (req,res) => {
-    try{
+    try {
         const postContent = await Post.findAll({
             include: [
                 {
@@ -21,8 +21,8 @@ router.get('/', async (req,res) => {
     })
     }catch (err) {
     res.status(500).json(err);
-    }
-    });
+   }
+  });
 
 router.get('/comment', async (req,res) => {
     try {
@@ -81,7 +81,7 @@ router.get('/posts', withAuth, async (req,res) => {
           attributes: { exclude: ['password'] },
           include: [{ model: User}],
         });
-    
+        
         const user = userData.get({ plain: true });
     
         res.render('posts', {
@@ -93,15 +93,13 @@ router.get('/posts', withAuth, async (req,res) => {
       }
 });
 
-
-router.get('/posts/:id', async (req,res) => {
+router.get('/posts/:id', withAuth, async (req,res) => {
     
     res.render('posts', {
         posts,
         logged_in: req.session.logged_in, 
     })
 })
-
 
 router.get('/login', (req, res) => {
     if (req.session.logged_in) {
