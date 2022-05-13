@@ -53,27 +53,27 @@ router.get('/comment/:id', async (req,res) => {
     })
 })
 
-router.get('/dashboard', async (req,res) => {
-    try {
-        const projectComment = await Project.findByPk(req.params.id, {
-          include: [
-            {
-              model: User,
-              attributes: ['username'],
-            },
-          ],
-        });
+// router.get('/dashboard', async (req,res) => {
+//     try {
+//         const projectComment = await Project.findByPk(req.params.id, {
+//           include: [
+//             {
+//               model: User,
+//               attributes: ['username'],
+//             },
+//           ],
+//         });
     
-        const posts = postData.get({ plain: true });
+//         const posts = postData.get({ plain: true });
     
-        res.render('dashboard', {
-          posts,
-          logged_in: req.session.logged_in
-        });
-      } catch (err) {
-        res.status(500).json(err);
-      }
-});
+//         res.render('dashboard', {
+//           posts,
+//           logged_in: req.session.logged_in
+//         });
+//       } catch (err) {
+//         res.status(500).json(err);
+//       }
+// });
 
 router.get('/posts', withAuth, async (req,res) => {
     try {

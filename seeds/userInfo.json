@@ -1,14 +1,17 @@
 [
     {
       "username" : "LarryStooge",
+      "email" : "lstooge@classics.com",
       "password": "hello12345"
     },
     {
       "username" : "MoeStooge",
+      "email" : "mstooge@classics.com",
       "password": "bonjour123"
     },
     {
       "username" : "CurlyStooge",
+      "email" : "cstooge@classics.com",
       "password": "hola123456"
     }
   ]
