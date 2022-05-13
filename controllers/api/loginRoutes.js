@@ -9,7 +9,7 @@ router.post('/', async (req, res) => {
       res.status(400).json({ message: 'Incorrect username, please try again' });
       return;
     }
-    
+
     const correctPassword = await checkUser.checkPassword(req.body.password);
  
     if (!correctPassword) {
@@ -27,6 +27,25 @@ router.post('/', async (req, res) => {
     console.log(error)
   }
 });
+
+router.post('/signup', async (req, res) => {
+  console.log("hitting signup",req.body)
+  try {
+    const userData = await User.create(req.body);
+    console.log(userData);
+
+    req.session.save(() => {
+      req.session.user_id = userData.id;
+      req.session.logged_in = true;
+
+      res.status(200).json(userData);
+    });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+  });
+
 
 router.post('/logout', (req, res) => {
   if (req.session.logged_in) {
